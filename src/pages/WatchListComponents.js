@@ -1,11 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { watchList } from '../actions/watchList';
 import WatchListCard from '../components/WatchListCard';
 export default function WatchListComponents() {
 	const [watchlist, setWatchList] = React.useState([]);
 	
 	const watchListState = useSelector(state => state.favMovies);
-
 
 	React.useEffect(() => {
 		setWatchList(watchListState.watchlist);

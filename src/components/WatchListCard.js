@@ -4,10 +4,8 @@ import { removeFromWatchlist} from '../actions/watchList';
 import { Link } from 'react-router-dom';
 
 
-const Card = ({ movie }) => {
+const WatchListCard = ({ movie }) => {
 	const dispatch = useDispatch()
-
-	console.log(movie)
 	return (
 		<div style={{maxWidth:'300px'}} className="p-2 rounded-lg bg-white relative overflow-hidden m-2">
 
@@ -31,4 +29,4 @@ const Card = ({ movie }) => {
 	)
 }
 
-export default Card;
+export default WatchListCard;
