@@ -9,6 +9,13 @@ const Card = ({ movie }) => {
 	const dispatch = useDispatch()
 	const [favorite, setFavorite] = React.useState(false);
 
+	const watchlist = useSelector(state => state.favMovies.watchlist)
+
+	React.useEffect(() => {
+		const storedMovie = watchlist.find(o => o.movie.imdbID === movie.imdbID)
+		setFavorite(storedMovie ? true : false)
+	},[watchlist]);
+
 	const listItem = {
   hidden: { opacity: 0 },
   show: { opacity: 1 }
@@ -25,13 +32,10 @@ const Card = ({ movie }) => {
 						className="rounded-lg"
 						src={movie.Poster} alt="poster" /> : <div style={{ borderRadius: 10, width: '333px', height: '500px', backgroundColor: 'gray' }} />}
 			<button
-				onClick={() => {
-					dispatch(watchList(movie));
-					setFavorite(!favorite);
-				}}
+				onClick={() => {dispatch(watchList(movie));}}
 				className="focus:outline-none flex items-center justify-center absolute rounded-md text-white font-bold text-lg bg-black py-2 px-4 top-25 top-5 right-5"
 			> 
-			{!favorite ? <span>&#10084;</span> : <span>&times;</span>}
+			{favorite ? <span>&#10084;</span> : <span>&times;</span>}
 			</button>
 
 			<div className="p-2">
